@@ -1,0 +1,17 @@
+services:
+  api:
+    network_mode: bridge
+    container_name: oum-api
+    image: farhansyah/oum-api:dev
+    ports:
+      - "3010:3000"
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@172.17.0.2:5432/oum-dev?schema=public
+    
+    
+  web:
+    network_mode: bridge
+    container_name: oum-web
+    image: farhansyah/oum-web:dev
+    ports:
+      - "3000:3000"
